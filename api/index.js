@@ -1,22 +1,23 @@
-const express = require('express');
-const mongoose = require('mongoose');
+import express from 'express'
+import dotenv from 'dotenv'
+import mongoose from 'mongoose'
 const app = express();
-const PORT = 3001;
 
 // Middleware
 app.use(express.json());
+dotenv.config();
 
-// Connect to MongoDB
-mongoose.connect('mongodb://localhost/fitness_tracker', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => {
-    console.log('Connected to MongoDB');
-  })
-  .catch((err) => {
-    console.error('Failed to connect to MongoDB', err);
-  });
+// MONGOOSE SETUP
+const PORT = process.env.PORT || 6001;
+mongoose
+  .connect( process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  } ).then( () =>
+  {
+    app.listen( PORT, () => console.log( `SERVER PORT: ${ PORT }` ) );
+  } ).catch( ( error ) => console.log( `${ error } did not connect` ) ); 
+
 
 // Define Workout model
 const Workout = mongoose.model('Workout', {

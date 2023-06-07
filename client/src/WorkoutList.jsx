@@ -9,7 +9,7 @@ function WorkoutList() {
 
   const fetchWorkouts = async () => {
     try {
-      const response = await fetch("/workouts"); // Make a GET request to the backend API endpoint
+      const response = await fetch("http://localhost:3001/workouts"); // Make a GET request to the backend API endpoint
       const data = await response.json();
       setWorkouts(data);
     } catch (error) {
