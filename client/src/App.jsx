@@ -9,10 +9,10 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" exact component={<WorkoutList/>} />
-        <Route path="/workout/add" component={<WorkoutForm/>} />
-        <Route path="/goals" component={<GoalForm/>} />
-        <Route path="/progress" component={<ProgressChart/>} />
+        <Route path="/" exact element={<WorkoutList/>} />
+        <Route path="/workout/add" element={<WorkoutForm/>} />
+        <Route path="/goals" element={<GoalForm/>} />
+        <Route path="/progress" element={<ProgressChart/>} />
       </Routes>
     </BrowserRouter>
   );
