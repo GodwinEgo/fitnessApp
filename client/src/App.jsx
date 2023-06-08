@@ -1,21 +1,21 @@
 import React from "react";
-import { Route, Router } from "react-router-dom";
-import Header from './Header.jsx';
-import WorkoutForm from './WorkoutForm.jsx';
-import WorkoutList from './WorkoutList.jsx';
-import GoalForm from './GoalForm.jsx';
-import ProgressChart from './ProgressChart.jsx';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import WorkoutForm from "./WorkoutForm";
+import WorkoutList from "./WorkoutList";
+import GoalForm from "./GoalForm";
+import ProgressChart from "./ProgressChart";
 
 const App = () => {
-  return <Router>
-    <div>
-      <Header/>
-      <Route path="/" Component={<WorkoutList/>} />
-      <Route path="/workout/add" Component={<WorkoutForm/>} />
-      <Route path="/goals" Component={<GoalForm/>} />
-      <Route path="/progress" Component={<ProgressChart/>} />
-    </div>
-  </Router>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" exact component={<WorkoutList/>} />
+        <Route path="/workout/add" component={<WorkoutForm/>} />
+        <Route path="/goals" component={<GoalForm/>} />
+        <Route path="/progress" component={<ProgressChart/>} />
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;

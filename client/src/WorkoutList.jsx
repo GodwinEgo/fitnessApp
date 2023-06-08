@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from 'react'
 
-function WorkoutList() {
+const WorkoutList = () => {
   const [workouts, setWorkouts] = useState([]);
 
   useEffect(() => {
@@ -36,4 +36,6 @@ function WorkoutList() {
   );
 }
 
-export default WorkoutList;
+
+
+export default WorkoutList

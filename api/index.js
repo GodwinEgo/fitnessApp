@@ -7,16 +7,6 @@ const app = express();
 app.use(express.json());
 dotenv.config();
 
-// MONGOOSE SETUP
-const PORT = process.env.PORT || 6001;
-mongoose
-  .connect( process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  } ).then( () =>
-  {
-    app.listen( PORT, () => console.log( `SERVER PORT: ${ PORT }` ) );
-  } ).catch( ( error ) => console.log( `${ error } did not connect` ) ); 
 
 
 // Define Workout model
@@ -46,7 +36,13 @@ app.get('/workouts', async (req, res) => {
   }
 });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
+// MONGOOSE SETUP
+const PORT = process.env.PORT || 6001;
+mongoose
+  .connect( process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  } ).then( () =>
+  {
+    app.listen( PORT, () => console.log( `SERVER PORT: ${ PORT }` ) );
+  } ).catch( ( error ) => console.log( `${ error } did not connect` ) ); 
